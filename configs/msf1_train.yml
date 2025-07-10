@@ -1,0 +1,83 @@
+{
+  ### Environment Parameters
+  debug: false,
+  mode: train,
+  cuda: true,
+  pin_memory: true,
+  wandb: true,
+  worker: 8,
+  log_interval: 9999,
+  save_interval: 1,
+  saved_model_directory: 'model_ckpts_msf1',
+  train_fold: 1,
+  project_name: 'MSF1-FSG-Net',
+  CUDA_VISIBLE_DEVICES: '0',
+
+  ### Train Parameters
+  model_name: 'MSF_FSGNet',
+    n_classes: 1,
+    in_channels: 3,
+    base_c: 64,
+    depths: [3, 3, 9, 3],
+    kernel_size: 3,
+  dataloader: 'Image2Image_zero_pad',
+  criterion: 'DiceBCELoss',
+  task: 'segmentation',
+  input_space: 'RGB',
+  input_channel: 3,
+  input_size: [608, 608],
+  optimizer: 'AdamW',
+    lr: 0.001,
+    scheduler: 'WarmupCosine',
+    cycles: 100,
+    warmup_epoch: 20,
+    weight_decay: 0.05,
+  batch_size: 4,
+  epoch: 1000,
+  ema_decay: 0,
+  class_weight: [1.0, 1.0],
+  model_path: '',
+    freeze_layer: false,
+
+  ### Augmentation Parameters
+  transform_blur: true,
+  transform_jitter: true,
+  transform_hflip: true,
+  transform_perspective: true,
+  transform_cutmix: true,
+  transform_rand_resize: true,
+  transform_rand_crop: 288,
+
+  train_x_path: '/path/to/train/input',
+  train_y_path: '/path/to/train/label',
+  val_x_path: '/path/to/val/input',
+  val_y_path: '/path/to/val/label',
+}
+# DRIVE数据集
+input_size: [608, 608]
+train_x_path: '/root/FSG-Net-pytorch/data/DRIVE/train/input'
+train_y_path: '/root/FSG-Net-pytorch/data/DRIVE/train/label'
+val_x_path: '/root/FSG-Net-pytorch/data/DRIVE/val/input'
+val_y_path: '/root/FSG-Net-pytorch/data/DRIVE/val/label'
+
+optimizer: 'AdamW'
+lr: 0.001
+scheduler: 'WarmupCosine'
+cycles: 100
+warmup_epoch: 20
+weight_decay: 0.05
+batch_size: 4  # 根据GPU内存可能需要调整
+epoch: 1000
+ema_decay: 0
+class_weight: [1.0, 1.0]
+model_path: ''  # 如果有预训练模型，可以填写路径
+freeze_layer: false
+
+### Augmentation Parameters
+transform_blur: true
+transform_jitter: true
+transform_hflip: true
+transform_perspective: true
+transform_cutmix: true
+transform_rand_resize: true
+transform_rand_crop: 288

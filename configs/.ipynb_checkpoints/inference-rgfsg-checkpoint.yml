@@ -1,0 +1,32 @@
+### Environment Parameters
+debug: false
+mode: inference
+cuda: true
+pin_memory: true
+wandb: false
+worker: 2
+CUDA_VISIBLE_DEVICES: '0'
+
+### Train Parameters
+model_name: 'RG_FSGNet'
+n_classes: 1
+in_channels: 3
+base_c: 64
+inference_mode: 'segmentation'
+task: 'segmentation'
+dataloader: 'Image2Image_resize'
+criterion: 'DiceBCE'
+input_space: 'RGB'
+input_channel: 3
+
+# 数据集特定参数 - DRIVE数据集
+input_size: [608, 608]
+model_path: '/root/FSG-Net-pytorch/model_ckpts/FSG-Net-DRIVE.pt'
+val_x_path: "/root/FSG-Net-pytorch/data/DRIVE/val/input"
+val_y_path: "/root/FSG-Net-pytorch/data/DRIVE/val/label"
+
+# 区域生长参数（可选，有默认值）
+mu_f: 0.0789
+sigma_f: 0.0774
+alpha: 1.0
+stretch_factor: 0.3
