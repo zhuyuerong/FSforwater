@@ -1,8 +1,3 @@
-# Full-scale Representation Guided Network for Retinal Vessel Segmentation
-This is official repository of the paper [Full-scale Representation Guided Network for Retinal Vessel Segmentation](https://arxiv.org/abs/2501.18921)
-
-![image_2](images/Qualitative_evaluation.png)
-
 ## Environment
 
 - OS: Ubuntu 16.04
